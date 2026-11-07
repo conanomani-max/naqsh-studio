@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="نقش ستوديو — مواقع تعريفية وأنظمة أعمال وأتمتة واتساب للمشاريع في عُمان. Naqsh Studio, Muscat.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 fill=%27%230A1D20%27/%3E%3Cg fill=%27none%27 stroke=%27%23D4B06E%27 stroke-width=%275%27%3E%3Crect x=%2721%27 y=%2721%27 width=%2758%27 height=%2758%27/%3E%3Crect x=%2721%27 y=%2721%27 width=%2758%27 height=%2758%27 transform=%27rotate(45 50 50)%27/%3E%3C/g%3E%3C/svg%3E">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>نقش ستوديو</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Cormorant:ital,wght@0,500;0,600;1,500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one long engraved scroll — kufic hero mark, works ledger, services, process, quote form, contact. Single deliberate dark look (Omani sea at night + frankincense gold). */
+:root{
+  --ink:#0A1D20;        /* deep petrol — page */
+  --ink-2:#0F282C;      /* raised panels */
+  --ink-3:#143338;
+  --line:#23454B;       /* engraved hairlines */
+  --pearl:#EEE7D9;      /* main text */
+  --mist:#9DB2AF;       /* secondary text */
+  --gold:#C9A45F;       /* luban gold — the accent */
+  --gold-hi:#E6C98F;
+  --wa:#2FBF71;
+  --f-display-ar:"Reem Kufi","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --f-display-en:"Cormorant","Times New Roman",serif;
+  --f-body:"IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r:14px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{background:var(--ink);color:var(--pearl);font-family:var(--f-body);font-size:16px;line-height:1.75;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--ink)}
+a{color:inherit}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{max-width:1160px;margin-inline:auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.disp{font-family:var(--f-display-ar)}
+html[lang="en"] .disp{font-family:var(--f-display-en);font-weight:600;letter-spacing:.005em}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:12px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--gold)}
+:focus-visible{outline:2px solid var(--gold-hi);outline-offset:3px;border-radius:6px}
+
+/* pattern: 8-point star lattice, very faint */
+.lattice{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='72' height='72' viewBox='0 0 72 72'%3E%3Cg fill='none' stroke='%23C9A45F' stroke-opacity='.07'%3E%3Crect x='24' y='24' width='24' height='24'/%3E%3Crect x='24' y='24' width='24' height='24' transform='rotate(45 36 36)'/%3E%3C/g%3E%3C/svg%3E")}
+
+/* NAV */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--ink) 86%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand svg{width:40px;height:40px;flex:none}
+.brand b{font-family:var(--f-display-ar);font-size:22px;font-weight:600;line-height:1;color:var(--pearl)}
+.brand small{display:block;font-family:var(--f-mono);font-size:10px;letter-spacing:.3em;color:var(--gold);margin-top:5px}
+.links{display:flex;gap:26px;font-size:14px}
+.links a{text-decoration:none;color:var(--mist);transition:color .2s}
+.links a:hover{color:var(--gold-hi)}
+.nav-r{display:flex;gap:10px;align-items:center}
+.lang{font-family:var(--f-mono);font-size:12px;letter-spacing:.1em;background:transparent;border:1px solid var(--line);color:var(--pearl);padding:8px 12px;border-radius:999px;cursor:pointer}
+.lang:hover{border-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:10px;justify-content:center;font:500 15px/1 var(--f-body);text-decoration:none;cursor:pointer;border-radius:999px;padding:14px 24px;border:1px solid var(--gold);background:var(--gold);color:var(--ink);transition:background .25s,transform .25s}
+.btn:hover{background:var(--gold-hi);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--pearl);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--gold);background:transparent}
+.btn.sm{padding:9px 16px;font-size:13px}
+@media (max-width:860px){.links{display:none}}
+@media (max-width:420px){.nav-r .btn.sm{display:none}}
+
+/* HERO */
+.hero{position:relative;padding-block:72px 64px;border-bottom:1px solid var(--line)}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center}
+.hero h1{font-size:clamp(64px,13vw,168px);line-height:.95;color:var(--gold);font-weight:600;letter-spacing:-.01em}
+html[lang="en"] .hero h1{font-size:clamp(60px,11vw,150px);font-weight:500;font-style:italic}
+.hero .tag{font-size:clamp(22px,3.2vw,34px);line-height:1.35;margin-top:18px;max-width:20ch}
+.hero .lede{color:var(--mist);margin-top:18px;max-width:52ch;font-size:17px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.seal{position:relative;aspect-ratio:1;max-width:380px;width:100%;justify-self:center}
+.seal svg{width:100%;height:100%}
+.seal .spin{transform-origin:50% 50%;animation:spin 60s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.meta{display:flex;flex-wrap:wrap;gap:28px;margin-top:44px;font-family:var(--f-mono);font-size:12px;color:var(--mist);letter-spacing:.06em}
+.meta span b{display:block;color:var(--pearl);font-weight:500;font-size:14px}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}.seal{max-width:240px;order:-1}}
+@media (prefers-reduced-motion:reduce){.seal .spin{animation:none}html{scroll-behavior:auto}}
+
+/* SECTIONS */
+section{padding-block:88px}
+.sec-head{display:grid;grid-template-columns:1fr 1fr;gap:24px 48px;align-items:end;margin-bottom:44px}
+.sec-head h2{font-size:clamp(32px,5vw,52px);line-height:1.15;margin-top:14px;font-weight:600}
+.sec-head p{color:var(--mist);max-width:50ch}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr}}
+
+/* WORKS */
+.works{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.work{grid-column:span 2;display:flex;flex-direction:column;gap:14px;background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r);padding:22px;min-width:0;transition:border-color .3s,transform .3s}
+.work:hover{border-color:color-mix(in srgb,var(--gold) 55%,var(--line));transform:translateY(-3px)}
+.work.feature{grid-column:span 4;flex-direction:row;gap:26px;align-items:stretch}
+.work.half{grid-column:span 3}
+.work .vis{background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:16px;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:8px;font-family:var(--f-mono);font-size:12px;color:var(--mist)}
+.work.feature .vis{flex:0 0 44%}
+.work .body{display:flex;flex-direction:column;gap:10px;min-width:0}
+.work .kind{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;color:var(--gold);text-transform:uppercase}
+.work h3{font-size:22px;font-weight:600;line-height:1.3}
+.work p{color:var(--mist);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.chip{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:3px 10px;color:var(--pearl)}
+.work .live{font-size:14px;color:var(--gold-hi);text-decoration:none;border-bottom:1px solid currentColor;align-self:flex-start}
+/* mini visuals */
+.inv-row{display:flex;justify-content:space-between;border-bottom:1px dashed var(--line);padding-bottom:6px;font-variant-numeric:tabular-nums}
+.inv-row.tot{color:var(--gold-hi);border:0;font-weight:500}
+.bubble{background:#173d33;color:#d9f2e4;border-radius:12px 12px 4px 12px;padding:8px 12px;font-family:var(--f-body);font-size:13px;align-self:flex-end;max-width:90%}
+.qr{width:74px;height:74px;align-self:center;background:
+ conic-gradient(from 90deg at 50% 50%,var(--pearl) 25%,transparent 0 50%,var(--pearl) 0 75%,transparent 0) 0 0/18.5px 18.5px;border:6px solid var(--pearl);border-radius:6px;opacity:.9}
+.linkbar{border:1px solid var(--line);border-radius:999px;padding:7px 12px;text-align:center;font-family:var(--f-body);color:var(--pearl)}
+.linkbar:first-child{border-color:var(--gold);color:var(--gold-hi)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal i{aspect-ratio:1;border-radius:3px;background:var(--ink-3)}
+.cal i.on{background:color-mix(in srgb,var(--gold) 70%,transparent)}
+@media (max-width:900px){.work,.work.half,.work.feature{grid-column:span 3}.work.feature{flex-direction:column}.work.feature .vis{flex:auto}}
+@media (max-width:620px){.works{grid-template-columns:1fr}.work,.work.half,.work.feature{grid-column:auto}}
+
+/* SERVICES */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));border-top:1px solid var(--line)}
+.svc{padding:28px 24px 28px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:10px}
+[dir="rtl"] .svc{padding:28px 0 28px 24px}
+.svc svg{width:34px;height:34px;stroke:var(--gold);fill:none;stroke-width:1.4}
+.svc h3{font-size:20px;font-weight:600}
+.svc p{color:var(--mist);font-size:15px}
+.svc .from{font-family:var(--f-mono);font-size:12px;color:var(--gold);margin-top:auto;font-variant-numeric:tabular-nums}
+
+/* ABOUT */
+.about{background:var(--ink-2);border-block:1px solid var(--line)}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.about blockquote{margin:0;font-size:clamp(26px,3.6vw,38px);line-height:1.4;color:var(--pearl)}
+.about blockquote em{color:var(--gold);font-style:normal}
+.about .txt{display:flex;flex-direction:column;gap:16px;color:var(--mist);font-size:16.5px;max-width:60ch}
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:10px}
+.values div{border-top:1px solid var(--gold);padding-top:12px;color:var(--pearl);font-size:15px}
+.values div small{display:block;color:var(--mist);font-size:13px;margin-top:4px;line-height:1.5}
+@media (max-width:860px){.about-grid{grid-template-columns:1fr;gap:32px}.values{grid-template-columns:1fr}}
+
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;counter-reset:s}
+.step{position:relative;padding-top:22px;border-top:1px solid var(--line)}
+.step::before{counter-increment:s;content:counter(s,arabic-indic);position:absolute;top:-14px;inset-inline-start:0;background:var(--ink);padding-inline-end:10px;font-family:var(--f-display-ar);color:var(--gold);font-size:22px;line-height:1}
+html[lang="en"] .step::before{content:"0" counter(s);font-family:var(--f-mono);font-size:15px}
+.step h3{font-size:19px;font-weight:600;margin-bottom:6px}
+.step p{color:var(--mist);font-size:15px}
+@media (max-width:860px){.steps{grid-template-columns:1fr 1fr;row-gap:36px}}
+@media (max-width:480px){.steps{grid-template-columns:1fr}}
+
+/* QUOTE */
+.quote-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+.side{display:flex;flex-direction:column;gap:18px}
+.side p{color:var(--mist)}
+.contact-list{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.ci{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;text-decoration:none;background:var(--ink-2);transition:border-color .2s}
+.ci:hover{border-color:var(--gold)}
+.ci svg{width:22px;height:22px;flex:none}
+.ci b{display:block;font-weight:500}
+.ci span{font-family:var(--f-mono);font-size:13px;color:var(--mist);direction:ltr;unicode-bidi:isolate}
+form{background:var(--ink-2);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f{display:flex;flex-direction:column;gap:7px;min-width:0}
+.f.full{grid-column:1/-1}
+label{font-size:13px;color:var(--mist)}
+input,select,textarea{font:inherit;font-size:15px;color:var(--pearl);background:var(--ink);border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+.tel{direction:ltr;text-align:start}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills input{position:absolute;opacity:0;pointer-events:none}
+.pills label{border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;color:var(--pearl);font-size:14px;font-variant-numeric:tabular-nums}
+.pills input:checked+label{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 16%,transparent);color:var(--gold-hi)}
+.pills input:focus-visible+label{outline:2px solid var(--gold-hi);outline-offset:2px}
+.err{color:#E89A86;font-size:13px;grid-column:1/-1}
+.done{grid-column:1/-1;border:1px solid var(--gold);border-radius:12px;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--ink)}
+.done pre{white-space:pre-wrap;font-family:var(--f-body);font-size:14px;color:var(--mist);margin:0;max-height:180px;overflow:auto}
+.done .row{display:flex;flex-wrap:wrap;gap:10px}
+.btn.wa{background:var(--wa);border-color:var(--wa);color:#05210f}
+@media (max-width:860px){.quote-grid{grid-template-columns:1fr}}
+@media (max-width:520px){form{grid-template-columns:1fr;padding:20px}}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding-block:40px 110px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:20px;align-items:center;color:var(--mist);font-size:14px}
+.foot .brand b{font-size:18px}
+
+/* floating whatsapp */
+.fab{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom,0px));inset-inline-end:calc(20px + env(safe-area-inset-right,0px));width:58px;height:58px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.4);z-index:55;transition:transform .2s}
+.fab:hover{transform:scale(1.07)}
+.fab svg{width:30px;height:30px;fill:#fff}
+html[dir="rtl"] .fab{inset-inline-end:auto;left:calc(20px + env(safe-area-inset-left,0px))}
+
+/* load moment */
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.rise.d2{animation-delay:.12s}.rise.d3{animation-delay:.24s}.rise.d4{animation-delay:.36s}
+@keyframes rise{from{transform:translateY(14px)}to{transform:none}}
+@media (prefers-reduced-motion:reduce){.rise{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- Logo symbol: khatim (8-point star of two squares) holding a kufic nūn — bowl + dot -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E6C98F"/><stop offset="1" stop-color="#A9843F"/>
+    </linearGradient>
+    <symbol id="mark" viewBox="0 0 100 100">
+      <g fill="none" stroke="url(#g)" stroke-width="3.2" stroke-linejoin="miter">
+        <rect x="21" y="21" width="58" height="58"/>
+        <rect x="21" y="21" width="58" height="58" transform="rotate(45 50 50)"/>
+      <path d="M33 47 V56 a8 8 0 0 0 8 8 H59 a8 8 0 0 0 8 -8 V47" stroke-width="5.8" stroke-linecap="square"></path></g>
+      
+      <rect x="45.5" y="33" width="9" height="9" transform="rotate(45 50 37.5)" fill="url(#g)"></rect>
+    </symbol>
+  </defs>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Naqsh Studio">
+      <svg><use href="#mark"/></svg>
+      <span><b data-k="brand">نقش</b><small>NAQSH STUDIO</small></span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#works" data-k="nav1">الأعمال</a>
+      <a href="#services" data-k="nav2">الخدمات</a>
+      <a href="#about" data-k="nav3">من نحن</a>
+      <a href="#contact" data-k="nav4">تواصل معنا</a>
+    </nav>
+    <div class="nav-r">
+      <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
+      <a class="btn sm" href="#contact" data-k="navCta">اطلب عرض سعر</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <div class="hero lattice">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow rise" data-k="heroEye">استوديو رقمي · مسقط، عُمان</div>
+        <h1 class="disp rise d2" data-k="heroTitle">نقش</h1>
+        <p class="tag disp rise d3" data-k="heroTag">ننقش حضورك الرقمي كما تُنقش الفضّة العُمانية: بدقّة، وبصبر، وليدوم.</p>
+        <p class="lede rise d4" data-k="heroLede">مواقع تعريفية، أنظمة أعمال، وأتمتة واتساب للمتاجر والمشاريع في عُمان. كل مشروع مصمّم يدوياً من الصفر، بالعربية والإنجليزية.</p>
+        <div class="ctas rise d4">
+          <a class="btn" href="#contact" data-k="ctaQuote">اطلب عرض سعر</a>
+          <a class="btn ghost" href="#works" data-k="ctaWorks">شاهد الأعمال</a>
+        </div>
+        <div class="meta">
+          <span data-k="m1l">مقرّ العمل<b data-k="m1v">الرسيل · مسقط</b></span>
+          <span data-k="m2l">اللغات<b>العربية · English</b></span>
+          <span data-k="m3l">الرد خلال<b data-k="m3v">24 ساعة</b></span>
+        </div>
+      </div>
+      <div class="seal" aria-hidden="true">
+        <svg viewBox="0 0 300 300">
+          <g class="spin">
+            <circle cx="150" cy="150" r="142" fill="none" stroke="#23454B"/>
+            <path id="ring" d="M150 150 m-122 0 a122 122 0 1 1 244 0 a122 122 0 1 1 -244 0" fill="none"/>
+            <text font-family="IBM Plex Mono,monospace" font-size="11" letter-spacing="6.2" fill="#C9A45F">
+              <textPath href="#ring">NAQSH STUDIO · نقش ستوديو · EST. 2026 · OMAN · </textPath>
+            </text>
+          </g>
+          <circle cx="150" cy="150" r="104" fill="#0F282C" stroke="#23454B"/>
+          <use href="#mark" x="80" y="80" width="140" height="140"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- WORKS -->
+  <section id="works">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow" data-k="wEye">الأعمال</div><h2 class="disp" data-k="wTitle">مشاريع حقيقية، تعمل كل يوم</h2></div>
+        <p data-k="wLede">من نظام فواتير لمتجر بثلاثة فروع، إلى قوائم طعام وصفحات روابط ومنصة كاملة للمشاريع المنزلية.</p>
+      </div>
+      <div class="works">
+        <article class="work feature">
+          <div class="vis" aria-hidden="true">
+            <div class="inv-row"><span>عسل سدر · Sidr</span><span>18.500</span></div>
+            <div class="inv-row"><span>عسل سمر · Samr</span><span>12.000</span></div>
+            <div class="inv-row"><span>VAT 5%</span><span>1.525</span></div>
+            <div class="inv-row tot"><span>الإجمالي ر.ع</span><span>32.025</span></div>
+            <div class="bubble">✓ تم إرسال فاتورتك إلى +968 ••••</div>
+          </div>
+          <div class="body">
+            <div class="kind" data-k="w1k">نظام أعمال · أتمتة واتساب</div>
+            <h3 data-k="w1t">رهش — فواتير تصل للعميل على واتساب</h3>
+            <p data-k="w1d">نظام فوترة لمتجر عسل بثلاثة فروع: يُدخل الموظف رقم العميل ويضغط «تم»، فتصل الفاتورة ثنائية اللغة بالريال العماني مباشرة على واتساب، مع حفظ بيانات العملاء ورسالة ترحيب بدون فاتورة.</p>
+            <div class="chips"><span class="chip">WhatsApp API</span><span class="chip" data-k="cBi">عربي / English</span><span class="chip">OMR · VAT</span></div>
+            <a class="live" href="https://rahash-om.netlify.app" target="_blank" rel="noopener" data-k="visit">زيارة الموقع ↗</a>
+          </div>
+        </article>
+        <article class="work">
+          <div class="vis" aria-hidden="true"><div class="qr"></div><div style="text-align:center" data-k="w2v">امسح لعرض القائمة</div></div>
+          <div class="kind" data-k="w2k">مطاعم ومقاهي</div>
+          <h3 data-k="w2t">قائمة طعام رقمية بـ QR</h3>
+          <p data-k="w2d">قائمة سريعة على الجوال، تتحدّث أسعارها فوراً بدون طباعة جديدة.</p>
+          <div class="chips"><span class="chip">QR</span><span class="chip">Mobile-first</span></div>
+        </article>
+        <article class="work half">
+          <div class="vis" aria-hidden="true"><div class="linkbar" data-k="lb1">اطلب عبر واتساب</div><div class="linkbar">Instagram</div><div class="linkbar" data-k="lb3">الموقع على الخريطة</div></div>
+          <div class="kind" data-k="w3k">هوية رقمية</div>
+          <h3 data-k="w3t">صفحة رابط واحد للأعمال</h3>
+          <p data-k="w3d">رابط واحد في البايو يجمع الطلب والتواصل والموقع، بهوية المشروع نفسها.</p>
+          <div class="chips"><span class="chip">Link-in-bio</span><span class="chip" data-k="cBrand">هوية مخصصة</span></div>
+        </article>
+        <article class="work half">
+          <div class="vis" aria-hidden="true"><div class="cal"><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i class="on"></i><i></i><i></i></div></div>
+          <div class="kind" data-k="w4k">أداة تسويق</div>
+          <h3 data-k="w4t">مخطط المحتوى الشهري</h3>
+          <p data-k="w4d">تُدخل بيانات المشروع أول كل شهر، فتخرج خطة نشر لشهر كامل، محفوظة باسم كل عميل للتعديل لاحقاً.</p>
+          <div class="chips"><span class="chip" data-k="cPlan">خطة شهرية</span><span class="chip">Instagram</span></div>
+        </article>
+        <article class="work" style="grid-column:1/-1;flex-direction:row;flex-wrap:wrap;align-items:center;gap:22px">
+          <div class="body" style="flex:1 1 320px">
+            <div class="kind" data-k="w5k">تطبيق · منصة</div>
+            <h3 data-k="w5t">منصة المشاريع المنزلية والمتاجر الصغيرة</h3>
+            <p data-k="w5d">تطبيق يجمع أصحاب المشاريع المنزلية الذين يبيعون عبر انستجرام وواتساب في مكان واحد، بمتجر وطلبات لكل تاجر.</p>
+          </div>
+          <div class="chips" style="margin:0"><span class="chip">App</span><span class="chip" data-k="cStore">متاجر</span><span class="chip" data-k="cOrders">طلبات</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow" data-k="sEye">الخدمات</div><h2 class="disp" data-k="sTitle">ما ننقشه لك</h2></div>
+        <p data-k="sLede">الأسعار تبدأ من الحد المذكور، وتُحدَّد بعد فهم المشروع. كل خدمة تشمل نسختين عربية وإنجليزية.</p>
+      </div>
+      <div class="services">
+        <div class="svc"><svg viewBox="0 0 32 32"><rect x="3" y="5" width="26" height="20" rx="2"/><path d="M3 10h26M12 29h8M16 25v4"/></svg><h3 data-k="s1t">مواقع تعريفية فاخرة</h3><p data-k="s1d">موقع يعرّف بمشروعك، سريع على الجوال، بلغتين، مع زر واتساب ونموذج طلب.</p><span class="from" data-k="s1p">يبدأ من 180 ر.ع</span></div>
+        <div class="svc"><svg viewBox="0 0 32 32"><path d="M6 26l2-6a11 11 0 1 1 4 4z"/><path d="M12 13h8M12 17h5"/></svg><h3 data-k="s2t">أنظمة أعمال وأتمتة واتساب</h3><p data-k="s2d">فواتير، تأكيد طلبات، ورسائل ترحيب تُرسل تلقائياً للعميل.</p><span class="from" data-k="s2p">يبدأ من 350 ر.ع</span></div>
+        <div class="svc"><svg viewBox="0 0 32 32"><rect x="4" y="4" width="10" height="10"/><rect x="18" y="4" width="10" height="10"/><rect x="4" y="18" width="10" height="10"/><path d="M18 18h4v4h-4zM24 24h4v4h-4z"/></svg><h3 data-k="s3t">قوائم QR وصفحات الروابط</h3><p data-k="s3d">للمطاعم والمقاهي والمشاريع المنزلية، جاهزة خلال أيام.</p><span class="from" data-k="s3p">يبدأ من 60 ر.ع</span></div>
+        <div class="svc"><svg viewBox="0 0 32 32"><rect x="9" y="3" width="14" height="26" rx="3"/><path d="M14 25h4"/></svg><h3 data-k="s4t">تطبيقات ومنصات</h3><p data-k="s4d">منصات متعددة التجار، لوحات تحكم، وتطبيقات ويب قابلة للتوسع.</p><span class="from" data-k="s4p">حسب النطاق</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="eyebrow" data-k="aEye">من نحن</div>
+        <blockquote class="disp" style="margin-top:18px" data-k="aQuote" data-html="1">النقش فنّ عُماني قديم في الفضّة والخشب. نحن نمارسه <em>بالكود</em>.</blockquote>
+      </div>
+      <div class="txt">
+        <p data-k="a1">نقش ستوديو استوديو رقمي مستقل من مسقط، يصمّم ويبني المواقع والأنظمة للمشاريع العُمانية: من المتجر العائلي إلى العلامة ذات الفروع.</p>
+        <p data-k="a2">نبدأ من مشكلة حقيقية في يومك: فاتورة ورقية تضيع، طلبات متفرقة في الواتساب، أو حساب انستجرام بلا موقع. ثم نبني لها حلاً أنيقاً يعمل فعلاً، ونبقى معك بعد الإطلاق.</p>
+        <div class="values">
+          <div><span data-k="v1">الدقّة</span><small data-k="v1d">كل بكسل وكل رسالة مدروسة.</small></div>
+          <div><span data-k="v2">المحلّية</span><small data-k="v2d">نفهم السوق العُماني والريال والـ 968.</small></div>
+          <div><span data-k="v3">الاستمرارية</span><small data-k="v3d">دعم ومتابعة بعد التسليم.</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow" data-k="pEye">طريقة العمل</div><h2 class="disp" data-k="pTitle">من الفكرة إلى الإطلاق</h2></div>
+        <p data-k="pLede">أربع مراحل واضحة، وتعرف في كل مرحلة ماذا تم وماذا بعده.</p>
+      </div>
+      <div class="steps">
+        <div class="step"><h3 data-k="p1t">نسمعك</h3><p data-k="p1d">جلسة قصيرة لفهم مشروعك وعملائك وما تحتاجه فعلاً.</p></div>
+        <div class="step"><h3 data-k="p2t">نصمّم</h3><p data-k="p2d">هوية وتصميم أولي تراه وتعدّل عليه قبل أي برمجة.</p></div>
+        <div class="step"><h3 data-k="p3t">نبني</h3><p data-k="p3d">برمجة نظيفة، بلغتين، تعمل على الجوال أولاً.</p></div>
+        <div class="step"><h3 data-k="p4t">نطلق ونتابع</h3><p data-k="p4d">نشر الموقع، ربط الدومين، وتدريبك على الاستخدام.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT / QUOTE -->
+  <section id="contact" class="lattice" style="border-top:1px solid var(--line)">
+    <div class="wrap quote-grid">
+      <div class="side">
+        <div class="eyebrow" data-k="cEye">تواصل معنا</div>
+        <h2 class="disp" style="font-size:clamp(32px,5vw,50px);line-height:1.15;font-weight:600" data-k="cTitle">لنبدأ مشروعك</h2>
+        <p data-k="cLede">املأ النموذج وسيصلنا طلبك جاهزاً على واتساب، أو تواصل معنا مباشرة.</p>
+        <div class="contact-list">
+          <a class="ci" id="waLink" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="#2FBF71"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3z"/></svg>
+            <div><b data-k="ciWa">واتساب</b><span id="waText"></span></div>
+          </a>
+          <a class="ci" id="igLink" href="#" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A45F" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="#C9A45F"/></svg>
+            <div><b data-k="ciIg">انستجرام</b><span id="igText"></span></div>
+          </a>
+          <div class="ci" style="cursor:text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C9A45F" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+            <div><b data-k="ciMail">البريد</b><span id="mailText"></span></div>
+          </div>
+        </div>
+      </div>
+
+      <form id="quote" novalidate>
+        <div class="f"><label for="qName" data-k="fName">الاسم</label><input id="qName" autocomplete="name" required></div>
+        <div class="f"><label for="qBiz" data-k="fBiz">اسم المشروع</label><input id="qBiz"></div>
+        <div class="f full"><label for="qPhone" data-k="fPhone">رقم الواتساب</label><input id="qPhone" class="tel" type="tel" inputmode="tel" placeholder="+968 9XXX XXXX" required></div>
+        <div class="f full"><label for="qSvc" data-k="fSvc">نوع الخدمة</label>
+          <select id="qSvc">
+            <option value="s1t" data-k="s1t">مواقع تعريفية فاخرة</option>
+            <option value="s2t" data-k="s2t">أنظمة أعمال وأتمتة واتساب</option>
+            <option value="s3t" data-k="s3t">قوائم QR وصفحات الروابط</option>
+            <option value="s4t" data-k="s4t">تطبيقات ومنصات</option>
+          </select>
+        </div>
+        <div class="f full"><span style="font-size:13px;color:var(--mist)" data-k="fBudget">الميزانية التقريبية (ر.ع)</span>
+          <div class="pills" role="radiogroup">
+            <input type="radio" name="b" id="b1" value="< 150" checked><label for="b1">&lt; 150</label>
+            <input type="radio" name="b" id="b2" value="150 – 400"><label for="b2">150 – 400</label>
+            <input type="radio" name="b" id="b3" value="400 – 900"><label for="b3">400 – 900</label>
+            <input type="radio" name="b" id="b4" value="900+"><label for="b4">900+</label>
+          </div>
+        </div>
+        <div class="f full"><label for="qMsg" data-k="fMsg">تفاصيل المشروع</label><textarea id="qMsg" data-ph="fMsgPh" placeholder="حدّثنا عن مشروعك وما تريد تحقيقه…"></textarea></div>
+        <p class="err" id="qErr" hidden></p>
+        <div class="f full"><button class="btn" type="submit" data-k="fSend">جهّز طلب عرض السعر</button></div>
+        <div class="done" id="qDone" hidden>
+          <b data-k="dTitle">طلبك جاهز. أرسله لنا عبر واتساب:</b>
+          <pre id="qPreview"></pre>
+          <div class="row">
+            <a class="btn wa" id="qWa" href="#" target="_blank" rel="noopener" data-k="dWa">إرسال عبر واتساب</a>
+            <button class="btn ghost" type="button" id="qCopy" data-k="dCopy">نسخ الطلب</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><svg><use href="#mark"/></svg><span><b data-k="brand">نقش</b><small>NAQSH STUDIO</small></span></a>
+    <span data-k="foot">© 2026 نقش ستوديو · صُنع في مسقط</span>
+  </div>
+</footer>
+
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.7-.1 1.3z"/></svg>
+</a>
+
+<script>
+/* ===== بيانات التواصل — عدّلها هنا فقط ===== */
+const CONTACT = {
+  whatsapp: "96879080097",       // رقمك بدون + أو مسافات
+  instagram: "naqsh.s.om",
+  email: "hello@naqsh.om"
+};
+
+const T = {
+ar:{brand:"نقش",nav1:"الأعمال",nav2:"الخدمات",nav3:"من نحن",nav4:"تواصل معنا",navCta:"اطلب عرض سعر",
+heroEye:"استوديو رقمي · مسقط، عُمان",heroTitle:"نقش",heroTag:"ننقش حضورك الرقمي كما تُنقش الفضّة العُمانية: بدقّة، وبصبر، وليدوم.",
+heroLede:"مواقع تعريفية، أنظمة أعمال، وأتمتة واتساب للمتاجر والمشاريع في عُمان. كل مشروع مصمّم يدوياً من الصفر، بالعربية والإنجليزية.",
+ctaQuote:"اطلب عرض سعر",ctaWorks:"شاهد الأعمال",m1l:"مقرّ العمل",m1v:"مسقط",m2l:"اللغات",m3l:"الرد خلال",m3v:"24 ساعة",
+wEye:"الأعمال",wTitle:"مشاريع حقيقية، تعمل كل يوم",wLede:"من نظام فواتير لمتجر بثلاثة فروع، إلى قوائم طعام وصفحات روابط ومنصة كاملة للمشاريع المنزلية.",
+w1k:"نظام أعمال · أتمتة واتساب",w1t:"رهش — فواتير تصل للعميل على واتساب",w1d:"نظام فوترة لمتجر عسل بثلاثة فروع: يُدخل الموظف رقم العميل ويضغط «تم»، فتصل الفاتورة ثنائية اللغة بالريال العماني مباشرة على واتساب، مع حفظ بيانات العملاء ورسالة ترحيب بدون فاتورة.",
+cBi:"عربي / English",visit:"زيارة الموقع ↗",w2v:"امسح لعرض القائمة",w2k:"مطاعم ومقاهي",w2t:"قائمة طعام رقمية بـ QR",w2d:"قائمة سريعة على الجوال، تتحدّث أسعارها فوراً بدون طباعة جديدة.",
+lb1:"اطلب عبر واتساب",lb3:"الموقع على الخريطة",w3k:"هوية رقمية",w3t:"صفحة رابط واحد للأعمال",w3d:"رابط واحد في البايو يجمع الطلب والتواصل والموقع، بهوية المشروع نفسها.",cBrand:"هوية مخصصة",
+w4k:"أداة تسويق",w4t:"مخطط المحتوى الشهري",w4d:"تُدخل بيانات المشروع أول كل شهر، فتخرج خطة نشر لشهر كامل، محفوظة باسم كل عميل للتعديل لاحقاً.",cPlan:"خطة شهرية",
+w5k:"تطبيق · منصة",w5t:"منصة المشاريع المنزلية والمتاجر الصغيرة",w5d:"تطبيق يجمع أصحاب المشاريع المنزلية الذين يبيعون عبر انستجرام وواتساب في مكان واحد، بمتجر وطلبات لكل تاجر.",cStore:"متاجر",cOrders:"طلبات",
+sEye:"الخدمات",sTitle:"ما ننقشه لك",sLede:"الأسعار تبدأ من الحد المذكور، وتُحدَّد بعد فهم المشروع. كل خدمة تشمل نسختين عربية وإنجليزية.",
+s1t:"مواقع تعريفية فاخرة",s1d:"موقع يعرّف بمشروعك، سريع على الجوال، بلغتين، مع زر واتساب ونموذج طلب.",s1p:"يبدأ من 180 ر.ع",
+s2t:"أنظمة أعمال وأتمتة واتساب",s2d:"فواتير، تأكيد طلبات، ورسائل ترحيب تُرسل تلقائياً للعميل.",s2p:"يبدأ من 350 ر.ع",
+s3t:"قوائم QR وصفحات الروابط",s3d:"للمطاعم والمقاهي والمشاريع المنزلية، جاهزة خلال أيام.",s3p:"يبدأ من 60 ر.ع",
+s4t:"تطبيقات ومنصات",s4d:"منصات متعددة التجار، لوحات تحكم، وتطبيقات ويب قابلة للتوسع.",s4p:"حسب النطاق",
+aEye:"من نحن",aQuote:"النقش فنّ عُماني قديم في الفضّة والخشب. نحن نمارسه <em>بالكود</em>.",
+a1:"نقش ستوديو استوديو رقمي مستقل من مسقط، يصمّم ويبني المواقع والأنظمة للمشاريع العُمانية: من المتجر العائلي إلى العلامة ذات الفروع.",
+a2:"نبدأ من مشكلة حقيقية في يومك: فاتورة ورقية تضيع، طلبات متفرقة في الواتساب، أو حساب انستجرام بلا موقع. ثم نبني لها حلاً أنيقاً يعمل فعلاً، ونبقى معك بعد الإطلاق.",
+v1:"الدقّة",v1d:"كل بكسل وكل رسالة مدروسة.",v2:"المحلّية",v2d:"نفهم السوق العُماني والريال والـ 968.",v3:"الاستمرارية",v3d:"دعم ومتابعة بعد التسليم.",
+pEye:"طريقة العمل",pTitle:"من الفكرة إلى الإطلاق",pLede:"أربع مراحل واضحة، وتعرف في كل مرحلة ماذا تم وماذا بعده.",
+p1t:"نسمعك",p1d:"جلسة قصيرة لفهم مشروعك وعملائك وما تحتاجه فعلاً.",p2t:"نصمّم",p2d:"هوية وتصميم أولي تراه وتعدّل عليه قبل أي برمجة.",p3t:"نبني",p3d:"برمجة نظيفة، بلغتين، تعمل على الجوال أولاً.",p4t:"نطلق ونتابع",p4d:"نشر الموقع، ربط الدومين، وتدريبك على الاستخدام.",
+cEye:"تواصل معنا",cTitle:"لنبدأ مشروعك",cLede:"املأ النموذج وسيصلنا طلبك جاهزاً على واتساب، أو تواصل معنا مباشرة.",ciWa:"واتساب",ciIg:"انستجرام",ciMail:"البريد",
+fName:"الاسم",fBiz:"اسم المشروع",fPhone:"رقم الواتساب",fSvc:"نوع الخدمة",fBudget:"الميزانية التقريبية (ر.ع)",fMsg:"تفاصيل المشروع",fMsgPh:"حدّثنا عن مشروعك وما تريد تحقيقه…",fSend:"جهّز طلب عرض السعر",
+dTitle:"طلبك جاهز. أرسله لنا عبر واتساب:",dWa:"إرسال عبر واتساب",dCopy:"نسخ الطلب",copied:"تم النسخ",
+eReq:"اكتب اسمك ورقم واتساب صحيح حتى نتمكن من الرد عليك.",foot:"© 2026 نقش ستوديو · صُنع في مسقط",
+msgHead:"طلب عرض سعر — نقش ستوديو",lName:"الاسم",lBiz:"المشروع",lPhone:"واتساب",lSvc:"الخدمة",lBud:"الميزانية",lMsg:"التفاصيل",omr:"ر.ع",greet:"مرحباً نقش، أرغب بالتواصل بخصوص مشروع."},
+en:{brand:"Naqsh",nav1:"Work",nav2:"Services",nav3:"About",nav4:"Contact",navCta:"Request a quote",
+heroEye:"Digital studio · Muscat, Oman",heroTitle:"Naqsh",heroTag:"We engrave your digital presence the way Omani silver is engraved: precisely, patiently, built to last.",
+heroLede:"Brand websites, business systems and WhatsApp automation for shops and ventures in Oman. Every project is designed by hand from scratch, in Arabic and English.",
+ctaQuote:"Request a quote",ctaWorks:"See the work",m1l:"Based in",m1v:"Muscat",m2l:"Languages",m3l:"Reply within",m3v:"24 hours",
+wEye:"Selected work",wTitle:"Real projects, running every day",wLede:"From an invoicing system for a three-branch store to QR menus, link pages and a full platform for home businesses.",
+w1k:"Business system · WhatsApp automation",w1t:"Rahash — invoices delivered on WhatsApp",w1d:"Invoicing for a three-branch honey store: staff enter the customer's number and tap “Done”, and a bilingual invoice in Omani rials lands on the customer's WhatsApp. Customer records are saved, with a welcome message option without an invoice.",
+cBi:"Arabic / English",visit:"Visit the site ↗",w2v:"Scan to view menu",w2k:"Restaurants & cafés",w2t:"Digital QR menu",w2d:"A fast mobile menu whose prices update instantly, with no reprinting.",
+lb1:"Order on WhatsApp",lb3:"Find us on the map",w3k:"Digital identity",w3t:"One-link business page",w3d:"A single bio link for ordering, contact and location, dressed in the brand's own identity.",cBrand:"Custom branding",
+w4k:"Marketing tool",w4t:"Monthly content planner",w4d:"Enter a business's details at the start of each month and get a full month of posts, saved per client to revisit and edit.",cPlan:"Monthly plan",
+w5k:"App · Platform",w5t:"Home-business & small-store platform",w5d:"An app that brings home businesses selling on Instagram and WhatsApp into one place, with a storefront and orders for each merchant.",cStore:"Storefronts",cOrders:"Orders",
+sEye:"Services",sTitle:"What we engrave for you",sLede:"Prices start at the figure shown and are set once we understand the project. Every service ships in Arabic and English.",
+s1t:"Premium brand websites",s1d:"A site that introduces your business, fast on mobile, bilingual, with a WhatsApp button and request form.",s1p:"From OMR 180",
+s2t:"Business systems & WhatsApp automation",s2d:"Invoices, order confirmations and welcome messages sent to customers automatically.",s2p:"From OMR 350",
+s3t:"QR menus & link pages",s3d:"For restaurants, cafés and home businesses, ready within days.",s3p:"From OMR 60",
+s4t:"Apps & platforms",s4d:"Multi-merchant platforms, dashboards and web apps built to grow.",s4p:"Scoped per project",
+aEye:"About",aQuote:"Naqsh is the old Omani craft of engraving silver and wood. We practise it <em>in code</em>.",
+a1:"Naqsh Studio is an independent digital studio in Muscat that designs and builds websites and systems for Omani businesses, from the family shop to the multi-branch brand.",
+a2:"We start from a real problem in your day: a paper invoice that gets lost, orders scattered across WhatsApp, an Instagram account with no website. Then we build an elegant fix that actually works, and we stay with you after launch.",
+v1:"Precision",v1d:"Every pixel and every message is considered.",v2:"Local",v2d:"We know the Omani market, the rial and +968.",v3:"Continuity",v3d:"Support and follow-up after handover.",
+pEye:"How we work",pTitle:"From idea to launch",pLede:"Four clear stages. At each one you know what's done and what comes next.",
+p1t:"Listen",p1d:"A short session to understand your business, your customers and what you really need.",p2t:"Design",p2d:"Identity and a first design you review and adjust before any code.",p3t:"Build",p3d:"Clean, bilingual, mobile-first code.",p4t:"Launch & follow up",p4d:"Go live, connect your domain, and get trained on using it.",
+cEye:"Contact",cTitle:"Let's start your project",cLede:"Fill in the form and your request reaches us ready on WhatsApp, or reach us directly.",ciWa:"WhatsApp",ciIg:"Instagram",ciMail:"Email",
+fName:"Name",fBiz:"Business name",fPhone:"WhatsApp number",fSvc:"Service",fBudget:"Approximate budget (OMR)",fMsg:"Project details",fMsgPh:"Tell us about your project and what you want to achieve…",fSend:"Prepare my quote request",
+dTitle:"Your request is ready. Send it to us on WhatsApp:",dWa:"Send on WhatsApp",dCopy:"Copy request",copied:"Copied",
+eReq:"Enter your name and a valid WhatsApp number so we can reply.",foot:"© 2026 Naqsh Studio · Made in Muscat",
+msgHead:"Quote request — Naqsh Studio",lName:"Name",lBiz:"Business",lPhone:"WhatsApp",lSvc:"Service",lBud:"Budget",lMsg:"Details",omr:"OMR",greet:"Hello Naqsh, I'd like to talk about a project."}
+};
+
+let lang = "ar";
+try{ const s = localStorage.getItem("naqsh-lang"); if(s==="en"||s==="ar") lang = s; }catch(e){}
+
+const wa = (txt)=>"https://wa.me/"+CONTACT.whatsapp+(txt?"?text="+encodeURIComponent(txt):"");
+
+function apply(){
+  const d = T[lang], root = document.documentElement;
+  root.lang = lang; root.dir = lang==="ar"?"rtl":"ltr";
+  document.querySelectorAll("[data-k]").forEach(el=>{
+    const v = d[el.dataset.k]; if(v==null) return;
+    if(el.dataset.html) el.innerHTML = v;
+    else if(el.dataset.k==="m1l"||el.dataset.k==="m2l"||el.dataset.k==="m3l"){ el.firstChild.nodeValue = v; }
+    else el.textContent = v;
+  });
+  document.querySelectorAll("[data-ph]").forEach(el=>el.placeholder = d[el.dataset.ph]);
+  document.getElementById("langBtn").textContent = lang==="ar"?"EN":"عربي";
+  document.title = lang==="ar"?"نقش ستوديو":"Naqsh Studio";
+  const greet = wa(d.greet);
+  ["waLink","fab"].forEach(id=>document.getElementById(id).href = greet);
+  if(!document.getElementById("qDone").hidden) build();
+  try{ localStorage.setItem("naqsh-lang", lang); }catch(e){}
+}
+
+document.getElementById("waText").textContent = "+" + CONTACT.whatsapp.replace(/^968/,"968 ");
+document.getElementById("igLink").href = "https://instagram.com/"+CONTACT.instagram;
+document.getElementById("igText").textContent = "@"+CONTACT.instagram;
+document.getElementById("mailText").textContent = CONTACT.email;
+document.getElementById("langBtn").addEventListener("click",()=>{ lang = lang==="ar"?"en":"ar"; apply(); });
+
+const $ = id=>document.getElementById(id);
+function build(){
+  const d = T[lang];
+  const svc = d[$("qSvc").value];
+  const bud = document.querySelector('input[name="b"]:checked').value + " " + d.omr;
+  const lines = [d.msgHead, "",
+    d.lName+": "+$("qName").value.trim(),
+    $("qBiz").value.trim()? d.lBiz+": "+$("qBiz").value.trim() : null,
+    d.lPhone+": "+$("qPhone").value.trim(),
+    d.lSvc+": "+svc,
+    d.lBud+": "+bud,
+    $("qMsg").value.trim()? "\n"+d.lMsg+":\n"+$("qMsg").value.trim() : null
+  ].filter(x=>x!==null).join("\n");
+  $("qPreview").textContent = lines;
+  $("qWa").href = wa(lines);
+  return lines;
+}
+$("quote").addEventListener("submit",e=>{
+  e.preventDefault();
+  const phoneOk = $("qPhone").value.replace(/\D/g,"").length >= 8;
+  if(!$("qName").value.trim() || !phoneOk){ $("qErr").textContent = T[lang].eReq; $("qErr").hidden = false; $("qDone").hidden = true; return; }
+  $("qErr").hidden = true; build(); $("qDone").hidden = false;
+  $("qDone").scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+$("qCopy").addEventListener("click",()=>{
+  const txt = build(), btn = $("qCopy");
+  const ok = ()=>{ btn.textContent = T[lang].copied; setTimeout(()=>btn.textContent = T[lang].dCopy,1600); };
+  navigator.clipboard.writeText(txt).then(ok).catch(()=>{
+    const r = document.createRange(); r.selectNodeContents($("qPreview"));
+    const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+  });
+});
+apply();
+</script>
+</body></html>
