@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0f1412">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="لحظة">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon.svg">
+<title>لحظة — خفّف استخدامك للتواصل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0f1412; --card:#18201d; --line:#26302c; --text:#eef3f0; --muted:#8fa199;
+  --accent:#7fd6a8; --accent2:#e9c46a; --danger:#ef7b6b; --radius:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{background:var(--bg);color:var(--text);font-family:'Tajawal',system-ui,sans-serif;min-height:100%}
+body{padding:env(safe-area-inset-top) 0 calc(env(safe-area-inset-bottom) + 84px)}
+.wrap{max-width:520px;margin:0 auto;padding:20px 18px}
+h1{font-size:26px;font-weight:800}
+h2{font-size:18px;font-weight:700;margin-bottom:12px}
+.muted{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin-bottom:14px}
+.row{display:flex;align-items:center;gap:12px}
+.between{justify-content:space-between}
+.btn{display:block;width:100%;border:0;border-radius:14px;padding:16px;font:700 17px 'Tajawal';cursor:pointer;text-align:center;text-decoration:none}
+.btn-primary{background:var(--accent);color:#08130d}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+.btn:disabled{opacity:.35}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 10px;text-align:center}
+.stat b{display:block;font-size:28px;font-weight:800}
+.stat span{font-size:13px;color:var(--muted)}
+.bar{height:10px;background:var(--line);border-radius:6px;overflow:hidden;flex:1}
+.bar i{display:block;height:100%;border-radius:6px;background:var(--accent)}
+.bar i.over{background:var(--danger)}
+.dot{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-weight:800;font-size:15px;color:#fff;flex-shrink:0}
+.week{display:flex;align-items:flex-end;gap:8px;height:120px;margin-top:8px}
+.week div{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.week .col{width:100%;background:var(--accent);border-radius:8px 8px 4px 4px;min-height:3px;opacity:.85}
+.week .col.today{background:var(--accent2)}
+.week small{font-size:11px;color:var(--muted)}
+.tabs{position:fixed;bottom:0;left:0;right:0;background:rgba(15,20,18,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;padding:8px 8px calc(env(safe-area-inset-bottom) + 8px);z-index:5}
+.tabs button{flex:1;background:none;border:0;color:var(--muted);font:500 13px 'Tajawal';padding:8px;display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer}
+.tabs button.on{color:var(--accent)}
+.tabs svg{width:22px;height:22px}
+.view{display:none}.view.on{display:block}
+/* pause */
+#pause{position:fixed;inset:0;background:radial-gradient(circle at 50% 35%,#1b2a23 0%,var(--bg) 70%);display:none;flex-direction:column;align-items:center;justify-content:center;padding:30px 24px;text-align:center;z-index:10}
+#pause.on{display:flex}
+.breath{width:190px;height:190px;border-radius:50%;border:2px solid var(--accent);display:grid;place-items:center;margin:28px 0;position:relative}
+.breath::before{content:'';position:absolute;inset:14px;border-radius:50%;background:rgba(127,214,168,.12);animation:breathe 8s ease-in-out infinite}
+@keyframes breathe{0%,100%{transform:scale(.6)}50%{transform:scale(1)}}
+.breath b{font-size:54px;font-weight:800;position:relative}
+.breath small{display:block;font-size:14px;color:var(--muted);font-weight:500}
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;max-width:380px;margin:18px 0}
+.reasons button{background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:14px;padding:14px 8px;font:500 15px 'Tajawal';cursor:pointer}
+.reasons button.on{border-color:var(--accent);background:rgba(127,214,168,.12)}
+.actions{width:100%;max-width:380px;display:grid;gap:10px}
+.warn{color:var(--danger);font-weight:700;margin-top:8px}
+.big{font-size:22px;font-weight:700;line-height:1.5}
+.step{display:flex;gap:12px;margin-bottom:16px}
+.step .n{width:28px;height:28px;border-radius:50%;background:var(--accent);color:#08130d;font-weight:800;display:grid;place-items:center;flex-shrink:0}
+.step p{line-height:1.7;font-size:15px}
+code{background:#0b0f0d;border:1px solid var(--line);border-radius:6px;padding:1px 6px;font-size:13px;direction:ltr;display:inline-block;user-select:all}
+.field{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line)}
+.field:last-child{border:0}
+.field input{width:70px;background:#0b0f0d;border:1px solid var(--line);color:var(--text);border-radius:10px;padding:8px;font:700 16px 'Tajawal';text-align:center}
+.pill{display:inline-block;background:rgba(233,196,106,.15);color:var(--accent2);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:700}
+.empty{text-align:center;padding:20px;color:var(--muted)}
+.copy{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%);background:var(--accent);color:#08130d;padding:10px 18px;border-radius:12px;font-weight:700;opacity:0;transition:.3s;z-index:20}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+
+<!-- شاشة لحظة التفكير -->
+<section id="pause">
+  <div id="p-stage1">
+    <span class="pill" id="p-count"></span>
+    <div class="breath"><div><b id="p-sec">10</b><small>خذ نفَس</small></div></div>
+    <p class="big" id="p-title">ليش فاتح انستقرام الحين؟</p>
+    <p class="warn" id="p-warn" hidden></p>
+  </div>
+  <div class="reasons" id="p-reasons"></div>
+  <div class="actions">
+    <button class="btn btn-primary" id="p-resist">خلاص، ما أحتاجه 💪</button>
+    <button class="btn btn-ghost" id="p-go" disabled>أكمل إلى التطبيق</button>
+  </div>
+</section>
+
+<section id="win" style="position:fixed;inset:0;background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:30px;z-index:11">
+  <div style="font-size:64px">🌿</div>
+  <p class="big" style="margin:16px 0 6px">قرار ممتاز</p>
+  <p class="muted" id="w-text"></p>
+  <button class="btn btn-ghost" style="max-width:300px;margin-top:28px" onclick="location.href=location.pathname">شوف إحصائياتي</button>
+</section>
+
+<main class="wrap">
+  <div class="row between" style="margin-bottom:18px">
+    <div><h1>لحظة</h1><p class="muted" id="today-date"></p></div>
+    <div class="dot" style="background:var(--accent);color:#08130d;width:44px;height:44px;border-radius:14px;font-size:20px">ل</div>
+  </div>
+
+  <!-- اليوم -->
+  <div class="view on" id="v-home">
+    <div class="stats">
+      <div class="stat"><b id="s-opens">0</b><span>محاولة فتح</span></div>
+      <div class="stat"><b id="s-resist" style="color:var(--accent)">0</b><span>قاومت</span></div>
+      <div class="stat"><b id="s-streak" style="color:var(--accent2)">0</b><span>أيام التزام</span></div>
+    </div>
+    <div class="card">
+      <h2>التطبيقات اليوم</h2>
+      <div id="apps-today"></div>
+    </div>
+    <div class="card">
+      <div class="row between"><h2 style="margin:0">آخر ٧ أيام</h2><span class="muted" style="font-size:13px">مرات الفتح</span></div>
+      <div class="week" id="week"></div>
+    </div>
+    <div class="card">
+      <h2>ليش تفتحها؟</h2>
+      <div id="reasons-stats"></div>
+    </div>
+  </div>
+
+  <!-- الإعداد -->
+  <div class="view" id="v-setup">
+    <div class="card">
+      <h2>الخطوة ١ — اختصار «السماح» (مرة وحدة)</h2>
+      <div class="step"><div class="n">1</div><p>افتح تطبيق <b>الاختصارات</b> ← تبويب <b>الاختصارات</b> ← زر <b>+</b>. سمِّه بالضبط: <code>LahzaAllow</code></p></div>
+      <div class="step"><div class="n">2</div><p>أضف إجراء <b>نص (Text)</b> واختر فيه المتغير <b>التاريخ الحالي (Current Date)</b>.</p></div>
+      <div class="step"><div class="n">3</div><p>أضف إجراء <b>حفظ الملف (Save File)</b>: ألغِ «اسأل عن المكان»، المسار <code>lahza.txt</code>، وفعّل <b>استبدال إذا وُجد</b>.</p></div>
+      <div class="step"><div class="n">4</div><p>أضف إجراء <b>فتح الروابط (Open URLs)</b> واختر فيه المتغير <b>مُدخل الاختصار (Shortcut Input)</b>.</p></div>
+      <p class="muted" style="font-size:14px">هذا الاختصار يعطيك ٣ دقائق سماح بعد ما تضغط «أكمل»، عشان ما ترجع لك شاشة لحظة مرة ثانية.</p>
+    </div>
+
+    <div class="card">
+      <h2>الخطوة ٢ — أتمتة لكل تطبيق</h2>
+      <div class="step"><div class="n">1</div><p>تبويب <b>الأتمتة</b> ← <b>+</b> ← <b>تطبيق (App)</b> ← اختر انستقرام ← <b>تم فتحه</b> ← <b>تشغيل فوراً</b>.</p></div>
+      <div class="step"><div class="n">2</div><p>أضف <b>الحصول على ملف (Get File)</b>: المسار <code>lahza.txt</code>، وألغِ <b>إظهار خطأ إذا لم يُعثر عليه</b>.</p></div>
+      <div class="step"><div class="n">3</div><p>أضف <b>الحصول على الوقت بين التواريخ (Get Time Between Dates)</b>: من <b>الملف</b> إلى <b>التاريخ الحالي</b>، بالدقائق.</p></div>
+      <div class="step"><div class="n">4</div><p>أضف <b>إذا (If)</b>: الوقت بين التواريخ <b>أقل من</b> <code>3</code> ← بداخلها <b>إيقاف هذا الاختصار</b>.</p></div>
+      <div class="step"><div class="n">5</div><p>بعد «انتهاء إذا» أضف <b>فتح الروابط (Open URLs)</b> وحط رابط التطبيق من القائمة تحت 👇</p></div>
+      <div id="links"></div>
+      <p class="muted" style="font-size:14px;margin-top:10px">كرّر الخطوة ٢ لكل تطبيق تبي تخففه. لو أول مرة ما فيه ملف، الاختصار يكمل عادي ويفتح لك لحظة.</p>
+    </div>
+
+    <div class="card">
+      <h2>للقفل الإجباري</h2>
+      <p style="line-height:1.7">لحظة تخلّيك تفكر قبل الفتح. ولو تبي قفلاً بعد وقت معيّن، روح إلى <b>الإعدادات ← مدة استخدام الجهاز ← حدود التطبيقات</b> وحط حداً يومياً لتطبيقات التواصل.</p>
+    </div>
+  </div>
+
+  <!-- الإعدادات -->
+  <div class="view" id="v-settings">
+    <div class="card">
+      <h2>مدة التوقف</h2>
+      <div class="field"><span>ثواني الانتظار العادية</span><input type="number" min="3" max="60" id="set-pause"></div>
+      <div class="field"><span>بعد تجاوز الحد</span><input type="number" min="5" max="120" id="set-pause-over"></div>
+    </div>
+    <div class="card">
+      <h2>الحد اليومي لمرات الفتح</h2>
+      <div id="limits"></div>
+    </div>
+    <button class="btn btn-ghost" id="reset" style="color:var(--danger)">مسح كل البيانات</button>
+  </div>
+</main>
+
+<nav class="tabs">
+  <button class="on" data-v="home"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>اليوم</button>
+  <button data-v="setup"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>الإعداد</button>
+  <button data-v="settings"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg>الإعدادات</button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script>
+const APPS = {
+  instagram:{name:'انستقرام', color:'#d6249f', scheme:'instagram://'},
+  snapchat: {name:'سناب شات', color:'#e6c800', scheme:'snapchat://'},
+  tiktok:   {name:'تيك توك', color:'#25f4ee', scheme:'snssdk1233://'},
+  x:        {name:'إكس', color:'#555', scheme:'twitter://'},
+  youtube:  {name:'يوتيوب', color:'#ff0000', scheme:'youtube://'},
+  whatsapp: {name:'واتساب', color:'#25d366', scheme:'whatsapp://'},
+  facebook: {name:'فيسبوك', color:'#1877f2', scheme:'fb://'}
+};
+const REASONS = ['ملل','أرد على رسالة','شغل','عادة بدون سبب','أبحث عن شي','هروب من مهمة'];
+const KEY='lahza_v1';
+
+function load(){
+  let d; try{ d=JSON.parse(localStorage.getItem(KEY)); }catch(e){}
+  d = d || {};
+  d.log = d.log || [];
+  d.settings = Object.assign({pause:10, pauseOver:30, limits:{instagram:5,snapchat:5,tiktok:3,x:5,youtube:5,whatsapp:30,facebook:3}}, d.settings||{});
+  return d;
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(DB)); }catch(e){} }
+let DB = load();
+
+const dayKey = t => { const d=new Date(t); return d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate(); };
+const todayK = dayKey(Date.now());
+const todayLog = () => DB.log.filter(e=>dayKey(e.t)===todayK);
+const toast = m => { const el=document.getElementById('toast'); el.textContent=m; el.classList.add('on'); setTimeout(()=>el.classList.remove('on'),1600); };
+
+/* ---------- شاشة التوقف ---------- */
+const params = new URLSearchParams(location.search);
+const appId = params.get('app');
+if (appId && APPS[appId]) startPause(appId);
+
+function startPause(id){
+  const app = APPS[id];
+  const entry = {t:Date.now(), app:id, a:'pending', r:null};
+  DB.log.push(entry); save();
+  // إزالة المعامل حتى لا يُسجَّل مرة ثانية عند التحديث
+  history.replaceState(null,'',location.pathname);
+
+  const n = todayLog().filter(e=>e.app===id).length;
+  const limit = DB.settings.limits[id] ?? 5;
+  const over = n > limit;
+  let sec = over ? DB.settings.pauseOver : DB.settings.pause;
+
+  document.getElementById('pause').classList.add('on');
+  document.getElementById('p-title').textContent = `ليش فاتح ${app.name} الحين؟`;
+  document.getElementById('p-count').textContent = `المرة رقم ${n} اليوم · الحد ${limit}`;
+  document.getElementById('p-go').textContent = `أكمل إلى ${app.name}`;
+  if (over){ const w=document.getElementById('p-warn'); w.hidden=false; w.textContent=`تجاوزت حدك اليومي بـ ${n-limit}`; }
+
+  const rb = document.getElementById('p-reasons');
+  rb.innerHTML = REASONS.map(r=>`<button>${r}</button>`).join('');
+  rb.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+    rb.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+    b.classList.add('on'); entry.r=b.textContent; save();
+  });
+
+  const secEl=document.getElementById('p-sec'), go=document.getElementById('p-go');
+  secEl.textContent=sec;
+  const iv=setInterval(()=>{ sec--; secEl.textContent=Math.max(sec,0);
+    if(sec<=0){ clearInterval(iv); go.disabled=false; secEl.textContent='✓'; } },1000);
+
+  go.onclick=()=>{
+    entry.a='continue'; save();
+    location.href='shortcuts://run-shortcut?name=LahzaAllow&input=text&text='+encodeURIComponent(app.scheme);
+  };
+  document.getElementById('p-resist').onclick=()=>{
+    clearInterval(iv); entry.a='resist'; save();
+    document.getElementById('pause').classList.remove('on');
+    const resisted = todayLog().filter(e=>e.a==='resist').length;
+    document.getElementById('w-text').textContent = `قاومت ${resisted} مرة اليوم. كل مرة تقاوم تقوّي العادة الجديدة.`;
+    document.getElementById('win').style.display='flex';
+  };
+}
+
+/* ---------- لوحة اليوم ---------- */
+function render(){
+  const tl = todayLog();
+  document.getElementById('today-date').textContent = new Date().toLocaleDateString('ar-OM',{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('s-opens').textContent = tl.length;
+  document.getElementById('s-resist').textContent = tl.filter(e=>e.a==='resist').length;
+  document.getElementById('s-streak').textContent = streak();
+
+  const counts={}; tl.forEach(e=>counts[e.app]=(counts[e.app]||0)+1);
+  const ids=Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+  document.getElementById('apps-today').innerHTML = ids.length ? ids.map(id=>{
+    const a=APPS[id]||{name:id,color:'#666'}, lim=DB.settings.limits[id]??5, c=counts[id];
+    return `<div class="row" style="margin-bottom:12px"><div class="dot" style="background:${a.color}">${a.name[0]}</div>
+      <div style="flex:1"><div class="row between" style="margin-bottom:6px"><b>${a.name}</b><span class="muted">${c} / ${lim}</span></div>
+      <div class="bar"><i class="${c>lim?'over':''}" style="width:${Math.min(100,c/lim*100)}%"></i></div></div></div>`;
+  }).join('') : `<div class="empty">ما فتحت شي اليوم 👏<br><small>أو ما ضبطت الاختصارات بعد — شوف تبويب الإعداد</small></div>`;
+
+  const days=[]; for(let i=6;i>=0;i--){ const d=new Date(); d.setDate(d.getDate()-i); days.push(d); }
+  const vals=days.map(d=>DB.log.filter(e=>dayKey(e.t)===dayKey(d)).length);
+  const max=Math.max(1,...vals);
+  document.getElementById('week').innerHTML = days.map((d,i)=>`<div><small>${vals[i]}</small><span class="col ${i===6?'today':''}" style="height:${vals[i]/max*85}%"></span><small>${d.toLocaleDateString('ar-OM',{weekday:'short'})}</small></div>`).join('');
+
+  const rc={}; DB.log.filter(e=>e.r).forEach(e=>rc[e.r]=(rc[e.r]||0)+1);
+  const rk=Object.keys(rc).sort((a,b)=>rc[b]-rc[a]); const rt=rk.reduce((s,k)=>s+rc[k],0);
+  document.getElementById('reasons-stats').innerHTML = rk.length ? rk.map(k=>`<div style="margin-bottom:10px"><div class="row between" style="margin-bottom:5px"><span>${k}</span><span class="muted">${Math.round(rc[k]/rt*100)}%</span></div><div class="bar"><i style="width:${rc[k]/rt*100}%;background:var(--accent2)"></i></div></div>`).join('') : `<div class="empty">اختر سبباً في شاشة لحظة وبتظهر الأنماط هنا</div>`;
+}
+// يوم ملتزم = ما تجاوز أي حد في أي تطبيق
+function streak(){
+  let s=0;
+  for(let i=1;i<=365;i++){
+    const d=new Date(); d.setDate(d.getDate()-i); const k=dayKey(d);
+    const dl=DB.log.filter(e=>dayKey(e.t)===k);
+    if(!DB.log.length || DB.log[0].t > d.getTime()+86400000) break;
+    const c={}; dl.forEach(e=>c[e.app]=(c[e.app]||0)+1);
+    if(Object.keys(c).some(a=>c[a]>(DB.settings.limits[a]??5))) break;
+    s++;
+  }
+  return s;
+}
+
+/* ---------- الإعداد ---------- */
+const base = location.origin + location.pathname;
+document.getElementById('links').innerHTML = Object.entries(APPS).map(([id,a])=>`
+  <div class="row" style="margin-bottom:10px"><div class="dot" style="background:${a.color}">${a.name[0]}</div>
+  <div style="flex:1;min-width:0"><b style="font-size:14px">${a.name}</b><br><code style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${base}?app=${id}</code></div>
+  <button class="btn btn-ghost" style="width:auto;padding:8px 12px;font-size:13px" data-copy="${base}?app=${id}">نسخ</button></div>`).join('');
+document.querySelectorAll('[data-copy]').forEach(b=>b.onclick=()=>{
+  navigator.clipboard?.writeText(b.dataset.copy).then(()=>toast('تم النسخ ✓'));
+});
+
+/* ---------- الإعدادات ---------- */
+const sp=document.getElementById('set-pause'), so=document.getElementById('set-pause-over');
+sp.value=DB.settings.pause; so.value=DB.settings.pauseOver;
+sp.onchange=()=>{DB.settings.pause=+sp.value||10;save();toast('تم الحفظ');};
+so.onchange=()=>{DB.settings.pauseOver=+so.value||30;save();toast('تم الحفظ');};
+document.getElementById('limits').innerHTML=Object.entries(APPS).map(([id,a])=>`<div class="field"><span class="row"><span class="dot" style="background:${a.color};width:26px;height:26px;font-size:12px">${a.name[0]}</span>${a.name}</span><input type="number" min="0" max="99" data-lim="${id}" value="${DB.settings.limits[id]??5}"></div>`).join('');
+document.querySelectorAll('[data-lim]').forEach(i=>i.onchange=()=>{DB.settings.limits[i.dataset.lim]=+i.value;save();render();toast('تم الحفظ');});
+document.getElementById('reset').onclick=()=>{ if(confirm('متأكد تبي تمسح كل البيانات؟')){ localStorage.removeItem(KEY); DB=load(); render(); } };
+
+/* ---------- التبويبات ---------- */
+document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.v));
+  window.scrollTo(0,0);
+});
+if(location.hash==='#setup') document.querySelector('[data-v=setup]').click();
+render();
+</script>
+</body>
+</html>
